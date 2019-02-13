@@ -170,6 +170,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		if (JOptionPane.showConfirmDialog(null, "Play again?") == JOptionPane.OK_OPTION) {
 			snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
 			setFoodLocation();
+			timer.restart();
 		} else {
 			java.lang.System.exit(0);
 		}

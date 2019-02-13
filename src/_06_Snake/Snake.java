@@ -24,8 +24,9 @@ public class Snake {
 	}
 
 	public void feed() {
+		Location l = snake.get(snake.size()-1).getLocation();
 		//1. add a new SnakeSegment object to the snake
-		snake.add(new SnakeSegment(snake.get(0).getLocation(), BODY_SIZE));
+		snake.add(snake.size(), new SnakeSegment(new Location(0, 0), BODY_SIZE));
 	}
 
 	public Location getHeadLocation() {
@@ -54,18 +55,14 @@ public class Snake {
 		}
 		//2. Iterate through the SnakeSegments in reverse order
 		//2a. Update each snake segment to the location of the segment 
-		//    in front of it.
-		ArrayList<SnakeSegment> snakea = new ArrayList<>();
-		for (int i = snake.size()-1; i >= 0; i++) {
-			if (i != 0) {
-				snakea.add(snake.get(i-1));
-			}
+		//    in front of it.Rudlfdrd
+		for (int i = 1; i < snake.size(); i++) {
+			snake.get(i).setLocation(snake.get(i-1).getLocation());
 		}
-		snakea.remove(0);
-		snake = snakea;
 		
 		//3. set the location of the head to the new location calculated in step 1
 		head.setLocation(new Location(x, y));
+		snake.add(head);
 		//4. set canMove to true
 		canMove = true;
 	}
@@ -95,17 +92,19 @@ public class Snake {
 				head.getLocation().x >= 0 &&
 				head.getLocation().y < _00_SnakeGame.HEIGHT &&
 				head.getLocation().y >= 0) {
-			return true;
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	public boolean isHeadCollidingWithBody() {
 		//1. complete the method so it returns true if the head is located
 		//   in the same location as any other body segment
 		for (SnakeSegment s : snake) {
-			if (s.getLocation().equals(head.getLocation())) {
+			if (	s.getLocation().x == head.getLocation().x &&
+					s.getLocation().y == head.getLocation().y &&
+					!s.equals(head)) {
 				return true;
 			}
 		}
