@@ -25,8 +25,22 @@ public class Snake {
 
 	public void feed() {
 		Location l = snake.get(snake.size()-1).getLocation();
+		switch (currentDirection) {
+		case LEFT:
+			l.x++;
+			break;
+		case UP:
+			l.y++;
+			break;
+		case RIGHT:
+			l.x--;
+			break;
+		case DOWN:
+			l.y--;
+			break;
+		}
 		//1. add a new SnakeSegment object to the snake
-		snake.add(snake.size(), new SnakeSegment(new Location(0, 0), BODY_SIZE));
+		snake.add(snake.size(), new SnakeSegment(l, BODY_SIZE));
 	}
 
 	public Location getHeadLocation() {
@@ -55,8 +69,8 @@ public class Snake {
 		}
 		//2. Iterate through the SnakeSegments in reverse order
 		//2a. Update each snake segment to the location of the segment 
-		//    in front of it.Rudlfdrd
-		for (int i = 1; i < snake.size(); i++) {
+		//    in front of it.
+		for (int i = snake.size()-1; i > 0; i--) {
 			snake.get(i).setLocation(snake.get(i-1).getLocation());
 		}
 		
@@ -65,6 +79,10 @@ public class Snake {
 		snake.add(head);
 		//4. set canMove to true
 		canMove = true;
+	}
+	
+	public Direction getDirection() {
+		return currentDirection;
 	}
 
 	public void setDirection(Direction d) {

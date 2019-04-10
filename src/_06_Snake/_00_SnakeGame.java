@@ -121,24 +121,27 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// if the space key is pressed, call the snake's feed method
 		switch (e.getKeyCode()) {
 		case 37:
-			snake.setDirection(Direction.LEFT);
-			System.out.println("l");
+			if (snake.getDirection() != Direction.RIGHT) {
+				snake.setDirection(Direction.LEFT);
+			}
 			break;
 		case 38:
-			snake.setDirection(Direction.UP);
-			System.out.println("u");
+			if (snake.getDirection() != Direction.DOWN) {
+				snake.setDirection(Direction.UP);
+			}
 			break;
 		case 39:
-			snake.setDirection(Direction.RIGHT);
-			System.out.println("r");
+			if (snake.getDirection() != Direction.LEFT) {
+				snake.setDirection(Direction.RIGHT);
+			}
 			break;
 		case 40:
-			snake.setDirection(Direction.DOWN);
-			System.out.println("d");
+			if (snake.getDirection() != Direction.UP) {
+				snake.setDirection(Direction.DOWN);
+			}
 			break;
 		case (int) ' ':
 			snake.feed();
-			break;
 		}
 		
 	}
