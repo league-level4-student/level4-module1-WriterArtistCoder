@@ -24,7 +24,7 @@ public class Snake {
 	}
 
 	public void feed() {
-		Location l = snake.get(snake.size()-1).getLocation();
+		Location l = snake.get(0).getLocation();
 		switch (currentDirection) {
 		case LEFT:
 			l.x++;
