@@ -22,9 +22,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	public static final Color BORDER_COLOR = Color.WHITE;
 	public static final Color BACKGROUND_COLOR = Color.BLACK;
 	public static final Color FOOD_COLOR = Color.RED;
-	public static final int WIDTH = 15;
-	public static final int HEIGHT = 12;
-	public static final int WINDOW_SCALE = 50;
+	public static final int WIDTH = 30;
+	public static final int HEIGHT = 30;
+	public static final int WINDOW_SCALE = Snake.BODY_SIZE;
 	public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
 	public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
 
@@ -90,10 +90,10 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 			timer.setDelay(100);
 			break;
 		case 1:
-			timer.setDelay(200);
+			timer.setDelay(150);
 			break;
 		case 2:
-			timer.setDelay(400);
+			timer.setDelay(200);
 			break;
 		}
 		//3. start the timer

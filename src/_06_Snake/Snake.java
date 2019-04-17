@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Snake {
 	public static final Color SNAKE_COLOR = Color.BLUE;
-	public static final int BODY_SIZE = 50;
+	public static final int BODY_SIZE = 20;
+	
 
 	private SnakeSegment head;
 	private ArrayList<SnakeSegment> snake;
@@ -71,12 +72,12 @@ public class Snake {
 		//2a. Update each snake segment to the location of the segment 
 		//    in front of it.
 		for (int i = snake.size()-1; i > 0; i--) {
-			snake.get(i).setLocation(snake.get(i-1).getLocation());
+			snake.get(i).setLocation(new Location(snake.get(i-1).getLocation().x, snake.get(i-1).getLocation().y));
 		}
 		
 		//3. set the location of the head to the new location calculated in step 1
 		head.setLocation(new Location(x, y));
-		snake.add(head);
+		//snake.add(head);
 		//4. set canMove to true
 		canMove = true;
 	}
